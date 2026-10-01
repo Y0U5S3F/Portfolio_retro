@@ -1,6 +1,23 @@
 # Youssef Saidani — Retro Portfolio
 
-React + Vite version of the retro portfolio.
+A modular React + Vite portfolio built around a late-90s / early-2000s desktop web aesthetic: beige canvas, blue title bars, beveled navigation, bordered panels and compact data tables.
+
+## Architecture
+
+```text
+src/
+├── App.jsx                    # Composition root
+├── main.jsx                   # React bootstrap
+├── components/
+│   ├── common/                # Reusable UI primitives
+│   ├── layout/                # Site chrome
+│   └── sections/              # Portfolio sections
+├── data/                      # Content/configuration only
+├── hooks/                     # Reusable React hooks
+└── styles/                    # Global theme + layout rules
+```
+
+The content is intentionally separated from presentation. Projects, experience, education, skills, navigation and profile information live in `src/data/`, while the React components focus on rendering.
 
 ## Run locally
 
@@ -9,11 +26,16 @@ npm install
 npm run dev
 ```
 
-## Build
+## Production build
 
 ```bash
 npm run build
 npm run preview
 ```
 
-The project keeps the classic desktop-era visual language: beige page, blue title bars, beveled navigation, bordered panels, compact tables and system-style typography.
+## Quality checks
+
+```bash
+npm run lint
+npm run format
+```

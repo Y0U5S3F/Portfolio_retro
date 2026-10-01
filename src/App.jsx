@@ -1,318 +1,39 @@
-import { useEffect, useState } from 'react'
+import { navigation } from './data/navigation'
+import { useActiveSection } from './hooks/useActiveSection'
+import { Footer } from './components/layout/Footer'
+import { Navbar } from './components/layout/Navbar'
+import { SiteHeader } from './components/layout/SiteHeader'
+import { ContactSection } from './components/sections/ContactSection'
+import { EducationSection } from './components/sections/EducationSection'
+import { ExperienceSection } from './components/sections/ExperienceSection'
+import { GitHubSection } from './components/sections/GitHubSection'
+import { ProfileSection } from './components/sections/ProfileSection'
+import { ProjectsSection } from './components/sections/ProjectsSection'
+import { SkillsSection } from './components/sections/SkillsSection'
+import { StatsSection } from './components/sections/StatsSection'
 
-const featuredProjects = [
-  {
-    title: 'Ghneya',
-    note: 'Latest project · Tunisian music guessing website',
-    description:
-      'A Tunisian music guessing website made by music enthusiasts. The project focuses on discovering local artists and songs through a playful quiz experience, backed by a curated music dataset and supporting data pipeline.',
-    technologies: ['TypeScript', 'React', 'Music APIs', 'Data pipelines', 'Quiz platform', 'Deezer API'],
-  },
-  {
-    title: 'Ghneya Scraper',
-    note: 'Data collection & dataset tooling',
-    description:
-      'A scraping and data-processing tool built for Ghneya. It is used to scrape music data, clean and normalize the results, analyze the dataset, and prepare reliable data for the website and its quiz system.',
-    technologies: ['Python', 'Web Scraping', 'Data Cleaning', 'Data Analysis', 'Automation'],
-  },
-  {
-    title: 'Bags Of Beauty',
-    note: 'Full-stack e-commerce platform for a makeup brand',
-    description:
-      'A complete, customizable e-commerce platform for a makeup brand, with a customer-facing store and full backend. Includes user accounts, Google and Facebook authentication, PayPal and Stripe payments, Apple Pay, product and order management, and a dedicated admin dashboard.',
-    technologies: ['React', 'TypeScript', 'Django', 'PostgreSQL', 'Google/Facebook Auth', 'PayPal', 'Stripe', 'Apple Pay'],
-  },
-  {
-    title: 'Matricule Tn',
-    note: 'AI traffic radar / vehicle recognition system',
-    description:
-      'An AI-powered road monitoring system that detects vehicles, reads license plates, and estimates vehicle speed from video. The project was built around Tunisian license-plate data and uses computer vision techniques for real-world traffic analysis.',
-    technologies: ['Python', 'YOLOv8', 'EasyOCR', 'Roboflow', 'Computer Vision', 'Speed Estimation'],
-  },
-  {
-    title: 'Flex Gym',
-    note: 'Gym website & management platform',
-    description:
-      'A complete gym management platform with a user-facing frontend, member accounts, and an administrative management dashboard. The platform covers gym operations such as memberships, classes, client management, and scheduling.',
-    technologies: ['Angular', 'PHP', 'MySQL', 'Java EE', 'WildFly', 'Admin Dashboard'],
-  },
-]
+const SECTION_IDS = navigation.map(({ id }) => id)
 
-const experience = [
-  {
-    period: 'Jun 2025 – Present',
-    role: 'Freelance Web Developer',
-    company: 'Self-employed · Remote',
-    description:
-      'Build production-ready web platforms with a strong backend focus: APIs, databases, authentication, Docker-based deployment and full-stack integration. Emphasis on scalability, security, maintainable architecture and usable interfaces.',
-  },
-  {
-    period: 'Jan 2025 – May 2025',
-    role: 'Full Stack Developer Intern',
-    company: 'SASCODE · Tunis',
-    description:
-      'Built an HR management platform in a team of two, connecting backend logic, data management, an AI chatbot and biometric attendance data into one web application.',
-  },
-  {
-    period: 'Jul 2024 – Aug 2024',
-    role: 'Network Engineering Intern',
-    company: 'Poulina Group Holding · Tunis',
-    description:
-      'Worked on migration and simulation of the SNA Poulina network. Configured switches and a Wi-Fi access point and simulated subnetting, VLANs, inter-VLAN routing, SSH, DHCP, DNS and PAT in Cisco Packet Tracer.',
-  },
-]
-
-const education = [
-  {
-    period: 'Sep 2026 – Sep 2028',
-    degree: "Master's Degree, Communications Engineering",
-    institution: 'Università di Catania',
-    focus: 'Computer networking, telecommunications and communication systems.',
-  },
-  {
-    period: 'Sep 2023 – Jul 2025',
-    degree: "Bachelor's Degree, Computer Science",
-    institution: 'Institut Supérieur des Technologies de l’Information et de la Communication',
-    focus: 'Software development, databases, web engineering, AI/ML and computer systems.',
-  },
-  {
-    period: 'Sep 2022 – Jun 2023',
-    degree: 'Computer Science',
-    institution: 'Faculté des Sciences de Monastir',
-    focus: 'First year of the Computer Science program before transferring to ISTIC.',
-  },
-]
-
-const skills = [
-  ['Backend', 'Django, Django REST Framework, Python, PHP, Java, SQL', 'APIs, business logic, authentication, databases and integrations'],
-  ['Frontend', 'React, TypeScript, Angular, JavaScript, HTML, CSS', 'Interfaces, responsive UI and full-stack integration'],
-  ['Data / AI', 'Python, YOLOv8, EasyOCR, TensorFlow, KNN, Linear Regression, Random Forest', 'Computer vision, OCR, prediction and data processing'],
-  ['Networking', 'VLANs, subnetting, inter-VLAN routing, DHCP, DNS, PAT, SSH, Cisco Packet Tracer', 'Network design, simulation and configuration'],
-  ['Infrastructure', 'Docker, PostgreSQL, MySQL, Linux, WildFly', 'Deployment, databases, application environments and server-side work'],
-]
-
-//const repositories = [
-//  ['JumParkRH', 'Repository associated with the HR management work: employee data, attendance and business workflows.', 'Public · JavaScript · ★ 1', 'https://github.com/Y0U5S3F/JumParkRH'],
-//  ['TimeTrackr', 'Web project centered around time and activity tracking.', 'Public · JavaScript', 'https://github.com/Y0U5S3F/TimeTrackr'],
-//  ['flexgym-project', 'Gym management application from the university project work.', 'Public · TypeScript · ★ 2', 'https://github.com/Y0U5S3F/flexgym-project'],
-//  ['youtube-playlist-downloader', 'Python utility project for working with YouTube playlists.', 'Public · Python', 'https://github.com/Y0U5S3F/youtube-playlist-downloader'],
-//] 
-
-//const certifications = [
-//  ['Data Analysis with Python', 'Cognitive Class', 'Dec 2025'],
-//  ['Machine Learning with Python', 'Cognitive Class', 'Dec 2025'],
-//]
-
-function Section({ id, title, children }) {
-  return (
-    <section id={id} className="panel">
-      <h2>{title}</h2>
-      <div className="body">{children}</div>
-    </section>
-  )
-}
-
-function Tag({ children }) {
-  return <span className="tag">{children}</span>
-}
-
-function App() {
-  const [active, setActive] = useState('home')
-
-  useEffect(() => {
-    const sections = [...document.querySelectorAll('section[id]')]
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible) setActive(visible.target.id)
-      },
-      { rootMargin: '-15% 0px -65% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] },
-    )
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
+export default function App() {
+  const activeSection = useActiveSection(SECTION_IDS)
 
   return (
     <div id="app">
-      <nav className="navbar" aria-label="Primary navigation">
-        {[
-          ['home', 'Home'],
-          ['projects', 'Projects'],
-          ['experience', 'Experience'],
-          ['skills', 'Skills'],
-          ['repos', 'GitHub'],
-          ['contact', 'Contact'],
-        ].map(([id, label]) => (
-          <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>
-            {label}
-          </a>
-        ))}
-      </nav>
+      <Navbar activeSection={activeSection} />
+      <SiteHeader />
 
-      <h1>
-        Youssef Saidani :: Portfolio
-        <a href="mailto:youssef.saidani.dev@gmail.com">[ Contact me ]</a>
-      </h1>
+      <main>
+        <ProfileSection />
+        <StatsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <EducationSection />
+        <SkillsSection />
+        <GitHubSection />
+        <ContactSection />
+      </main>
 
-      <Section id="home" title="About">
-        <div className="hero">
-          <div>
-            <h3>Software engineering with a communications &amp; networking focus.</h3>
-            <p>
-              I&apos;m a Communications Engineering master&apos;s student at the University of Catania and a full-stack developer.
-              My work sits between backend systems, web platforms, computer networks, and software that interacts with real-world devices.
-            </p>
-            <p>
-              I enjoy taking a project from requirements to a working system: designing APIs and databases, building the interface,
-              connecting external hardware or services, securing authentication, and deploying the result.
-            </p>
-            <div className="notice"><b>Current focus:</b> telecommunications &amp; networks, backend engineering, distributed systems, and practical software projects.</div>
-          </div>
-          <div className="panel profile-panel">
-            <h2>Profile</h2>
-            <div className="body status">
-              <div><b>Location:</b> Catania, Sicily, Italy</div>
-              <div><b>Current:</b> MSc Communications Engineering</div>
-              <div><b>Base:</b> Computer Science</div>
-              <div><b>Role:</b> Freelance Web Developer</div>
-              <div><b>Primary:</b> Full Stack</div>
-              <div><b>Also:</b> Networks, AI/CV, systems</div>
-              <div><b>Languages:</b> Arabic, French, English</div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <section className="panel" aria-label="At a glance">
-        <h2>At a glance</h2>
-        <div className="body">
-          <div className="kpis">
-            <div className="kpi">Experience<b>2024 → now</b></div>
-            <div className="kpi">Freelance<b>Jun 2025 →</b></div>
-            <div className="kpi">MSc<b>2026–2028</b></div>
-            <div className="kpi">BSc Computer Science<b>2025</b></div>
-            <div className="kpi">Core stack<b>Django + React</b></div>
-          </div>
-        </div>
-      </section>
-
-      <Section id="projects" title="Featured projects · newest → oldest">
-        <table className="grid">
-          <thead><tr><th>Project</th><th>Description</th><th>Technologies</th></tr></thead>
-          <tbody>
-            {featuredProjects.map((project) => (
-              <tr key={project.title}>
-                <td><span className="project-title">{project.title}</span><br /><span className="small">{project.note}</span><br /></td>
-                <td>{project.description}</td>
-                <td>{project.technologies.map((tech) => <Tag key={tech}>{tech}</Tag>)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Section>
-
-      <Section id="experience" title="Experience">
-        <table className="grid timeline">
-          <thead><tr><th>Period</th><th>Role</th><th>What I worked on</th></tr></thead>
-          <tbody>
-            {experience.map((item) => (
-              <tr key={`${item.period}-${item.role}`}>
-                <td>{item.period}</td>
-                <td><b>{item.role}</b><br /><span className="small">{item.company}</span></td>
-                <td>{item.description}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Section>
-
-      <Section title="Education">
-        <table className="grid">
-          <thead><tr><th>Period</th><th>Degree</th><th>Institution</th><th>Focus</th></tr></thead>
-          <tbody>
-            {education.map((item) => (
-              <tr key={`${item.period}-${item.institution}`}>
-                <td>{item.period}</td>
-                <td><b>{item.degree}</b></td>
-                <td>{item.institution}</td>
-                <td>{item.focus}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Section>
-
-      <Section id="skills" title="Technical skills">
-        <table className="grid">
-          <thead><tr><th>Area</th><th>Technologies</th><th>What I use them for</th></tr></thead>
-          <tbody>
-            {skills.map(([area, technologies, use]) => (
-              <tr key={area}><td><b>{area}</b></td><td>{technologies}</td><td>{use}</td></tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="section-note">The common thread across these areas is building systems that connect software, data, users and infrastructure.</div>
-      </Section>
-
-      {/*
-      <Section title="Certifications">
-        <table className="grid">
-          <thead><tr><th>Certification</th><th>Provider</th><th>Issued</th></tr></thead>
-          <tbody>
-            {certifications.map(([name, provider, date]) => (
-              <tr key={name}><td><b>{name}</b></td><td>{provider}</td><td>{date}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </Section>
-      */}
-
-      {/*<Section id="repos" title="GitHub :: selected repositories">
-        <div className="repo-grid">
-          {repositories.map(([name, description, meta, url]) => (
-            <div className="repo" key={name}>
-              <h3><a href={url} target="_blank" rel="noreferrer">{name}</a></h3>
-              <p>{description}</p>
-              <div className="meta">{meta}</div>
-            </div>
-          ))}
-        </div>
-        <div className="section-note">
-          <a href="https://github.com/Y0U5S3F?tab=repositories" target="_blank" rel="noreferrer">View all repositories →</a>
-        </div>
-      </Section>
-      */}
-
-      <Section id="contact" title="Contact">
-        <div className="contact-box">
-          <div>
-            <p style={{ marginTop: 0 }}><b>Open to engineering opportunities and freelance work.</b></p>
-            <p>Especially interested in backend development, full-stack applications, networks, telecommunications and software systems.</p>
-            <p className="links">
-              <a href="https://github.com/Y0U5S3F" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/youssef-saidani/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="mailto:youssef.saidani.dev@gmail.com">Email</a>
-            </p>
-            <p className="small mono">status: open_to_opportunities = true;</p>
-          </div>
-          <div>
-            <table className="grid">
-              <tbody>
-                <tr><th>Role</th><td>Communications Engineering Master&apos;s Student</td></tr>
-                <tr><th>Work</th><td>Freelance Web Developer</td></tr>
-                <tr><th>Location</th><td>Catania, Sicily, Italy</td></tr>
-                <tr><th>Interests</th><td>Networks · Backend · Distributed Systems · AI/CV</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </Section>
-
-      <div className="footer">Youssef Saidani :: Software Engineering · Communications Engineering · Catania</div>
+      <Footer />
     </div>
   )
 }
-
-export default App

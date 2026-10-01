@@ -1,0 +1,157 @@
+.hero h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.hero p {
+  margin: 0 0 10px;
+}
+
+.status {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.notice {
+  margin-top: 10px;
+  padding: 6px 8px;
+  background: var(--kpi-bg);
+  border: 1px solid var(--kpi-border);
+}
+
+.kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kpi {
+  width: 150px;
+  padding: 4px 8px;
+  background: var(--kpi-bg);
+  border: 1px solid var(--kpi-border);
+  font-size: 11px;
+}
+
+.kpi b {
+  display: block;
+  margin-top: 2px;
+  color: var(--title-blue);
+  font-size: 16px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+.grid {
+  width: 100%;
+  min-width: 690px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.grid th {
+  padding: 3px 6px;
+  text-align: left;
+  background: #ddd;
+  border: 1px solid var(--border);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.grid td {
+  padding: 5px 6px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+
+.grid tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.grid tbody tr:hover {
+  background: #fffff0;
+}
+
+.project-title {
+  color: var(--title-blue);
+  font-weight: 700;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0 4px;
+  background: var(--info-bg);
+  border: 1px solid var(--border);
+  font-size: 10px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.small,
+.section-note,
+.meta {
+  color: #666;
+  font-size: 10px;
+}
+
+.section-note {
+  margin: 6px 0 0;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.repo {
+  min-width: 0;
+  padding: 7px;
+  background: #fafafa;
+  border: 1px solid var(--border);
+}
+
+.repo h3 {
+  margin: 0 0 5px;
+  font-size: 12px;
+}
+
+.repo p {
+  margin: 0 0 7px;
+}
+
+.contact-box {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
+  gap: 10px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.mono {
+  font-family: 'Courier New', monospace;
+}
+
+.footer {
+  margin-top: 6px;
+  padding: 4px 8px;
+  background: #ddd;
+  border: 1px solid var(--border);
+  color: #444;
+  font-size: 10px;
+  text-align: center;
+}

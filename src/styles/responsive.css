@@ -1,0 +1,31 @@
+@media (max-width: 760px) {
+  #app {
+    width: min(100% - 12px, 940px);
+    margin-top: 8px;
+  }
+
+  .site-header h1 {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero,
+  .contact-box {
+    grid-template-columns: 1fr;
+  }
+
+  .repo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi {
+    flex: 1 1 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,94 @@
+#app {
+  width: min(940px, calc(100% - 24px));
+  margin: 20px auto 28px;
+}
+
+main {
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 10px;
+  padding: 2px;
+  background: var(--chrome);
+  border: 2px outset #fff;
+}
+
+.navbar a {
+  padding: 4px 14px;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid var(--chrome);
+}
+
+.navbar a:visited {
+  color: #000;
+}
+
+.navbar a:hover,
+.navbar a:focus-visible {
+  background: var(--page-bg);
+  border: 1px outset #fff;
+  outline: none;
+}
+
+.navbar a.active {
+  background: var(--page-bg);
+  border: 1px inset #808080;
+  font-weight: 700;
+}
+
+.site-header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+  padding: 4px 8px;
+  background: var(--title-blue);
+  border: 1px solid #000;
+  color: #fff;
+  font-size: 16px;
+}
+
+.header-action {
+  color: #ccffcc;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.header-action:visited {
+  color: #ccffcc;
+}
+
+.panel {
+  margin-bottom: 10px;
+  background: var(--panel-bg);
+  border: 2px solid var(--border);
+}
+
+.panel > h2 {
+  margin: 0;
+  padding: 4px 8px;
+  background: var(--title-soft);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.panel > .body {
+  padding: 8px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 10px;
+}
+
+.profile-panel {
+  margin: 0;
+}
