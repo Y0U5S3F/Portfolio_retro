@@ -2,32 +2,39 @@ import { useEffect, useState } from 'react'
 
 const featuredProjects = [
   {
-    title: 'HR Management Platform — JumPark',
-    note: 'Final-year / professional project',
-    description:
-      'Full-stack HR platform covering employee records, attendance planning, leave requests, payroll and payslips. Attendance data is imported from a biometric device, and the platform includes an AI assistant. Authentication uses JWT with rotating refresh tokens.',
-    technologies: ['Django', 'React', 'PostgreSQL', 'REST API', 'JWT', 'Biometric device', 'AI'],
-  },
-  {
-    title: 'Vehicle Detection & Speed Estimation',
-    note: 'Computer vision project',
-    description:
-      'Computer-vision system that detects vehicles, recognizes license plates and estimates vehicle speed from road video. The project used Tunisian-plate data and perspective correction for speed estimation.',
-    technologies: ['Python', 'YOLOv8', 'EasyOCR', 'Roboflow', 'Computer Vision'],
-  },
-  {
     title: 'Ghneya',
-    note: 'Tunisian music data platform',
+    note: 'Latest project · Tunisian music guessing website',
     description:
-      'A data-heavy music project built around Tunisian artists and songs, with artist discovery, metadata pipelines, genre tagging, playable previews, difficulty/popularity calculations and a quiz-oriented catalog workflow.',
-    technologies: ['TypeScript', 'Python', 'APIs', 'Data pipelines', 'Web'],
+      'A Tunisian music guessing website made by music enthusiasts. The project focuses on discovering local artists and songs through a playful quiz experience, backed by a curated music dataset and supporting data pipeline.',
+    technologies: ['TypeScript', 'React', 'Music APIs', 'Data pipelines', 'Quiz platform', 'Deezer API'],
   },
   {
-    title: 'FlexGym',
-    note: 'Gym management platform',
+    title: 'Ghneya Scraper',
+    note: 'Data collection & dataset tooling',
     description:
-      'Gym management web application covering memberships, classes, client management and scheduling. Built in an Angular/PHP/MySQL version and later rebuilt using Java EE and WildFly.',
-    technologies: ['Angular', 'PHP', 'MySQL', 'Java EE', 'WildFly'],
+      'A scraping and data-processing tool built for Ghneya. It is used to scrape music data, clean and normalize the results, analyze the dataset, and prepare reliable data for the website and its quiz system.',
+    technologies: ['Python', 'Web Scraping', 'Data Cleaning', 'Data Analysis', 'Automation'],
+  },
+  {
+    title: 'Bags Of Beauty',
+    note: 'Full-stack e-commerce platform for a makeup brand',
+    description:
+      'A complete, customizable e-commerce platform for a makeup brand, with a customer-facing store and full backend. Includes user accounts, Google and Facebook authentication, PayPal and Stripe payments, Apple Pay, product and order management, and a dedicated admin dashboard.',
+    technologies: ['React', 'TypeScript', 'Django', 'PostgreSQL', 'Google/Facebook Auth', 'PayPal', 'Stripe', 'Apple Pay'],
+  },
+  {
+    title: 'Matricule Tn',
+    note: 'AI traffic radar / vehicle recognition system',
+    description:
+      'An AI-powered road monitoring system that detects vehicles, reads license plates, and estimates vehicle speed from video. The project was built around Tunisian license-plate data and uses computer vision techniques for real-world traffic analysis.',
+    technologies: ['Python', 'YOLOv8', 'EasyOCR', 'Roboflow', 'Computer Vision', 'Speed Estimation'],
+  },
+  {
+    title: 'Flex Gym',
+    note: 'Gym website & management platform',
+    description:
+      'A complete gym management platform with a user-facing frontend, member accounts, and an administrative management dashboard. The platform covers gym operations such as memberships, classes, client management, and scheduling.',
+    technologies: ['Angular', 'PHP', 'MySQL', 'Java EE', 'WildFly', 'Admin Dashboard'],
   },
 ]
 
@@ -38,13 +45,6 @@ const experience = [
     company: 'Self-employed · Remote',
     description:
       'Build production-ready web platforms with a strong backend focus: APIs, databases, authentication, Docker-based deployment and full-stack integration. Emphasis on scalability, security, maintainable architecture and usable interfaces.',
-  },
-  {
-    period: 'Mar 2026 – Sep 2026',
-    role: 'Customer Service Representative',
-    company: 'Transcom · Tunis',
-    description:
-      'Handled customer requests on a large-scale account, customer-data and support-ticket system. The role strengthened practical understanding of large systems and translating technical issues into simple explanations.',
   },
   {
     period: 'Jan 2025 – May 2025',
@@ -91,21 +91,17 @@ const skills = [
   ['Infrastructure', 'Docker, PostgreSQL, MySQL, Linux, WildFly', 'Deployment, databases, application environments and server-side work'],
 ]
 
-const repositories = [
-  ['Ghneya', 'Music application and data ecosystem focused on Tunisian artists, songs and quiz-oriented discovery.', 'Private · TypeScript', 'https://github.com/Y0U5S3F/Ghneya'],
-  ['artist-discovery', 'Artist discovery and data-processing project built around music catalog exploration.', 'Public', 'https://github.com/Y0U5S3F/artist-discovery'],
-  ['JumParkRH', 'Repository associated with the HR management work: employee data, attendance and business workflows.', 'Public · JavaScript · ★ 1', 'https://github.com/Y0U5S3F/JumParkRH'],
-  ['TimeTrackr', 'Web project centered around time and activity tracking.', 'Public · JavaScript', 'https://github.com/Y0U5S3F/TimeTrackr'],
-  ['flexgym-project', 'Gym management application from the university project work.', 'Public · TypeScript · ★ 2', 'https://github.com/Y0U5S3F/flexgym-project'],
-  ['youtube-playlist-downloader', 'Python utility project for working with YouTube playlists.', 'Public · Python', 'https://github.com/Y0U5S3F/youtube-playlist-downloader'],
-  ['SoaSpring', 'Java project exploring service-oriented application development.', 'Public · Java', 'https://github.com/Y0U5S3F/SoaSpring'],
-  ['Portfolio_retro', 'This portfolio theme: deliberately styled like a classic desktop-era web application.', 'Public', 'https://github.com/Y0U5S3F/Portfolio_retro'],
-]
+//const repositories = [
+//  ['JumParkRH', 'Repository associated with the HR management work: employee data, attendance and business workflows.', 'Public · JavaScript · ★ 1', 'https://github.com/Y0U5S3F/JumParkRH'],
+//  ['TimeTrackr', 'Web project centered around time and activity tracking.', 'Public · JavaScript', 'https://github.com/Y0U5S3F/TimeTrackr'],
+//  ['flexgym-project', 'Gym management application from the university project work.', 'Public · TypeScript · ★ 2', 'https://github.com/Y0U5S3F/flexgym-project'],
+//  ['youtube-playlist-downloader', 'Python utility project for working with YouTube playlists.', 'Public · Python', 'https://github.com/Y0U5S3F/youtube-playlist-downloader'],
+//] 
 
-const certifications = [
-  ['Data Analysis with Python', 'Cognitive Class', 'Dec 2025'],
-  ['Machine Learning with Python', 'Cognitive Class', 'Dec 2025'],
-]
+//const certifications = [
+//  ['Data Analysis with Python', 'Cognitive Class', 'Dec 2025'],
+//  ['Machine Learning with Python', 'Cognitive Class', 'Dec 2025'],
+//]
 
 function Section({ id, title, children }) {
   return (
@@ -181,7 +177,7 @@ function App() {
               <div><b>Current:</b> MSc Communications Engineering</div>
               <div><b>Base:</b> Computer Science</div>
               <div><b>Role:</b> Freelance Web Developer</div>
-              <div><b>Primary:</b> Backend + Full Stack</div>
+              <div><b>Primary:</b> Full Stack</div>
               <div><b>Also:</b> Networks, AI/CV, systems</div>
               <div><b>Languages:</b> Arabic, French, English</div>
             </div>
@@ -197,19 +193,18 @@ function App() {
             <div className="kpi">Freelance<b>Jun 2025 →</b></div>
             <div className="kpi">MSc<b>2026–2028</b></div>
             <div className="kpi">BSc Computer Science<b>2025</b></div>
-            <div className="kpi">Internships<b>2</b></div>
             <div className="kpi">Core stack<b>Django + React</b></div>
           </div>
         </div>
       </section>
 
-      <Section id="projects" title="Featured projects">
+      <Section id="projects" title="Featured projects · newest → oldest">
         <table className="grid">
           <thead><tr><th>Project</th><th>Description</th><th>Technologies</th></tr></thead>
           <tbody>
             {featuredProjects.map((project) => (
               <tr key={project.title}>
-                <td><span className="project-title">{project.title}</span><br /><span className="small">{project.note}</span></td>
+                <td><span className="project-title">{project.title}</span><br /><span className="small">{project.note}</span><br /></td>
                 <td>{project.description}</td>
                 <td>{project.technologies.map((tech) => <Tag key={tech}>{tech}</Tag>)}</td>
               </tr>
@@ -261,6 +256,7 @@ function App() {
         <div className="section-note">The common thread across these areas is building systems that connect software, data, users and infrastructure.</div>
       </Section>
 
+      {/*
       <Section title="Certifications">
         <table className="grid">
           <thead><tr><th>Certification</th><th>Provider</th><th>Issued</th></tr></thead>
@@ -271,8 +267,9 @@ function App() {
           </tbody>
         </table>
       </Section>
+      */}
 
-      <Section id="repos" title="GitHub :: selected repositories">
+      {/*<Section id="repos" title="GitHub :: selected repositories">
         <div className="repo-grid">
           {repositories.map(([name, description, meta, url]) => (
             <div className="repo" key={name}>
@@ -286,6 +283,7 @@ function App() {
           <a href="https://github.com/Y0U5S3F?tab=repositories" target="_blank" rel="noreferrer">View all repositories →</a>
         </div>
       </Section>
+      */}
 
       <Section id="contact" title="Contact">
         <div className="contact-box">
